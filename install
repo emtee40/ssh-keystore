@@ -8,7 +8,7 @@ do_cd() {
 }
 
 build_vars() {
-SCRIPT_REV="v2"
+SCRIPT_REV="v3"
 if [ "$INSTALL_FILE" = "" ]; then
 INSTALL_FILE="$HOME/.ssh/authorized_keys"
 fi
@@ -29,29 +29,29 @@ Use \`git pull\` to update the keys & scripts
 
 get_options() {
 	case $1 in
-		-help|--help|help)
+		-help|--help|help|-h|"-?")
 			do_cd
 			build_vars
 			echo "$SCRIPT_DOCUMENTATION"
 			exit 0
 			;;
-		-file|--file|file)
+		-file|--file|file|-f)
 			shift
 			INSTALL_FILE="`readlink -f $1`"
 			shift
 			get_options $@
 			;;
-		-auto|--auto|auto)
+		-auto|--auto|auto|-a)
 			OPT_NOCONFIRM="true"
 			shift
 			get_options $@
 			;;
-		-pull|--pull|pull)
+		-pull|--pull|pull|-p)
 			OPT_DO_PULL="true"
 			shift
 			get_options $@
 			;;
-		-cron|--cron|cron)
+		-cron|--cron|cron|-c)
 			OPT_NOCONFIRM="true"
 			OPT_DO_PULL="true"
 			shift
