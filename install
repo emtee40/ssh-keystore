@@ -8,7 +8,7 @@ do_cd() {
 }
 
 build_vars() {
-SCRIPT_REV="v3"
+SCRIPT_REV="v4"
 if [ "$INSTALL_FILE" = "" ]; then
 INSTALL_FILE="$HOME/.ssh/authorized_keys"
 fi
@@ -87,6 +87,11 @@ do_the_thing() {
 	echo "# Generated from ColtonDRG/ssh-keystore commit `git rev-parse --short HEAD` on `date -u +%Y/%m/%d\ %H:%M`" >> $INSTALL_FILE
 	echo >> $INSTALL_FILE
 	cat *.pub >> $INSTALL_FILE
+	if [ -f "postinstall" ]; then
+		echo "Executing postinstall script."
+		export INSTALL_FILE="$INSTALL_FILE"
+		./postinstall
+	fi
 	echo "Process complete"
 	exit 0
 }

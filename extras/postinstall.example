@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# If a file called `postinstall` exists in the same directory as the `install` script, it will be executed after the main install script.
+# You can use this to add any additional keys to your authorized_keys file.
+# If you want to use this, use `cp extras/postinstall.example ./postinstall`
+# 
+# Use $INSTALL_LOCATION to refer to the authorized_keys file.
+# Here are a couple examples...
+#echo "ssh-rsa <your_own_key_here>" >> $INSTALL_LOCATION
+#cat extras/anotherkey.pub >> $INSTALL_LOCATION
