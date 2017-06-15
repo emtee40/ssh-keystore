@@ -37,13 +37,13 @@ The install script also supports cron. By running it with `--cron`, it will auto
 
 ##### From security.coltondrg.com via curl
 ```sh
-curl -O https://security.coltondrg.com/authorized_keys
+curl -O https://security.coltondrg.com/ssh/authorized_keys
 cp authorized_keys ~/.ssh/authorized_keys
 ```
 
 ##### From security.coltondrg.com via wget
 ```sh
-wget https://security.coltondrg.com/authroized_keys
+wget https://security.coltondrg.com/ssh/authroized_keys
 cp authorized_keys ~/.ssh/authorized_keys
 ```
 
