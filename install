@@ -3,6 +3,8 @@
 # Script to generate authorized_keys file
 # This script is under the MIT License. You can do whatever you want with it!
 
+{
+
 function do_cd() {
 	cd "`dirname $0`"
 }
@@ -129,3 +131,5 @@ function do_the_thing() {
 
 ORIGINAL_ARGS=("$@")
 get_options "$@"
+
+}
