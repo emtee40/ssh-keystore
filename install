@@ -3,12 +3,12 @@
 # Script to generate authorized_keys file
 # This script is under the MIT License. You can do whatever you want with it!
 
-do_cd() {
+function do_cd() {
 	cd "`dirname $0`"
 }
 
-build_vars() {
-SCRIPT_REV="v5"
+function build_vars() {
+SCRIPT_REV="v6"
 if [ "$INSTALL_FILE" = "" ]; then
 INSTALL_FILE="$HOME/.ssh/authorized_keys"
 fi
@@ -28,7 +28,7 @@ Use \`git pull\` to update the keys & scripts
 "
 }
 
-get_options() {
+function get_options() {
 	case $1 in
 		-help|--help|help|-h|"-?")
 			do_cd
@@ -71,10 +71,39 @@ get_options() {
 	esac
 }
 
-do_the_thing() {
+function get_md5() {
+	if [ $(command -v md5sum) ];then
+		md5sum "$@"
+	elif [ $(command -v openssl) ];then
+		openssl md5 "$@"
+	elif [ $(command -v md5) ];then
+		md5 "$@"
+	else
+		echo "no_md5_err"
+	fi
+}
+
+function do_the_thing() {
 	if [ "$OPT_DO_PULL" = "true" ]; then
 		# This can cause some weird things to happen if the script changes during the pull. Perhaps the script should detect such changes and restart itself?
+		SCRIPT_MD5=$(get_md5 install)
 		git pull
+		if [ "$SCRIPT_MD5" = "no_md5_err" ];then
+			echo "Unable to verify the integrity of this script."
+			if [ ! "$SCRIPT_RERUN" ];then
+				export SCRIPT_RERUN=1
+				"$0" "${ORIGINAL_ARGS[@]}"
+				SCRIPT_EXIT=$?
+				export SCRIPT_RERUN=""
+				exit $SCRIPT_EXIT
+			fi
+		elif [ "$SCRIPT_MD5" != "$(get_md5 install)" ]; then
+			echo "Script updated, re-running."
+			"$0" "${ORIGINAL_ARGS[@]}"
+			exit $?
+		else
+			echo "Script OK!"
+		fi
 	fi
 	echo "ColtonDRG SSH Keystore authorized_keys generation script $SCRIPT_REV"
 	echo "The keys from commit `git rev-parse --short HEAD` will be used to generate an authorized_keys file"
@@ -98,4 +127,5 @@ do_the_thing() {
 	exit 0
 }
 
-get_options $@
+ORIGINAL_ARGS=("$@")
+get_options "$@"
