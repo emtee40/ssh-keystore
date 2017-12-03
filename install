@@ -14,7 +14,7 @@ SCRIPT_REV="v8"
 if [ "$INSTALL_FILE" = "" ]; then
 INSTALL_FILE="$HOME/.ssh/authorized_keys"
 fi
-PROJECT_URL="https://git.drg.one/ColtonDRG/ssh-keystore"
+PROJECT_URL="https://git.drg.li/ColtonDRG/ssh-keystore"
 SCRIPT_DOCUMENTATION="
 ColtonDRG SSH Keystore `git rev-parse --short HEAD` ($PROJECT_URL)
 authorized_keys generation (install) script $SCRIPT_REV
