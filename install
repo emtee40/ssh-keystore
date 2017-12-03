@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 # ColtonDRG SSH Keystore
 # Script to generate authorized_keys file
 # This script is under the MIT License. You can do whatever you want with it!
@@ -10,7 +10,7 @@ function do_cd() {
 }
 
 function build_vars() {
-SCRIPT_REV="v6"
+SCRIPT_REV="v7"
 if [ "$INSTALL_FILE" = "" ]; then
 INSTALL_FILE="$HOME/.ssh/authorized_keys"
 fi
@@ -42,23 +42,23 @@ function get_options() {
 			shift
 			INSTALL_FILE="`readlink -f $1`"
 			shift
-			get_options $@
+			get_options "$@"
 			;;
 		-auto|--auto|auto|-a)
 			OPT_NOCONFIRM="true"
 			shift
-			get_options $@
+			get_options "$@"
 			;;
 		-pull|--pull|pull|-p)
 			OPT_DO_PULL="true"
 			shift
-			get_options $@
+			get_options "$@"
 			;;
 		-cron|--cron|cron|-c)
 			OPT_NOCONFIRM="true"
 			OPT_DO_PULL="true"
 			shift
-			get_options $@
+			get_options "$@"
 			;;
 		"")
 			do_cd
@@ -123,7 +123,7 @@ function do_the_thing() {
 	if [ -x "postinstall" ]; then
 		echo "Executing postinstall script."
 		export INSTALL_FILE="$INSTALL_FILE"
-		./postinstall
+		"./postinstall" "${ORIGINAL_ARGS[@]}"
 	fi
 	echo "Process complete"
 	exit 0
