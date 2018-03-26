@@ -1,4 +1,4 @@
-# ColtonDRG SSH Keystore
+# coltondrg?'s ssh keystore
 
 This is a place where I store the id_rsa.pub files for all of my computers. An `authorized_keys` file can easily be generated and installed via the `./install` script.
 

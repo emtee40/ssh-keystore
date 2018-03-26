@@ -1,5 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/env bash
-# ColtonDRG SSH Keystore
+# coltondrg?'s ssh keystore
 # Simple script to support Termux painlessly
 cd "$(dirname "$0")/.."
 bash install "$@"
