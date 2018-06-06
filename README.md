@@ -1,10 +1,8 @@
-# coltondrg?'s ssh keystore
+# coltondrg? ssh keystore
 
 This is a place where I store the id_rsa.pub files for all of my computers. An `authorized_keys` file can easily be generated and installed via the `./install` script.
 
-The canonical version of this repo is at [drg git](https://git.drg.li/ColtonDRG/ssh-keystore), however, a mirror is available at [GitHub](https://github.com/ColtonDRG/ssh-keystore) for convenience.
-
-An http-accessible copy of these, including a pre-generated `authorized_keys` file is available at https://security.coltondrg.com/ssh/
+The master copy of this repo is stored safely in [drg git](https://git.drg.li/coltondrg/ssh-keystore/) but mirrors are available at [GitGud](https://gitgud.io/coltondrg/ssh-keystore/) and [GitHub](https://github.com/coltondrg/ssh-keystore). There is also an http-only mirror of the repo, along with a pre-generated `authorized_keys` file at [security.coltondrg.com](https://security.coltondrg.com/ssh/).
 
 ## Quick installation
 
@@ -13,6 +11,13 @@ An http-accessible copy of these, including a pre-generated `authorized_keys` fi
 ##### From drg git
 ```sh
 git clone https://git.drg.li/coltondrg/ssh-keystore.git
+cd ssh-keystore
+./install
+```
+
+### From GitGud
+```sh
+git clone https://gitgud.io/coltondrg/ssh-keystore.git
 cd ssh-keystore
 ./install
 ```
