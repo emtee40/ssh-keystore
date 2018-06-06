@@ -32,8 +32,7 @@ cd ssh-keystore
 ##### Updating
 ```sh
 cd ssh-keystore
-git pull
-./install
+./install --pull
 ```
 
 The install script also supports cron. By running it with `--cron`, it will automatically fetch the latest commit and install without confirmation.
