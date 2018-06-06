@@ -15,7 +15,7 @@ cd ssh-keystore
 ./install
 ```
 
-#### From GitGud
+##### From GitGud
 ```sh
 git clone https://gitgud.io/coltondrg/ssh-keystore.git
 cd ssh-keystore
