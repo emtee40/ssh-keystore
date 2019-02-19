@@ -22,8 +22,9 @@ add_comment "# Lines added by postinstall script"
 #echo "# Maybe a nice comment?" >> $INSTALL_FILE
 
 # Maybe adding one of the keys in extras
-# You can use the `add_extra_key` command (a function of the main script) to do this in one command. This will verify that the extra key in question does exist, then add it to the authorized_keys file.
+# You can use the `add_extra_key` command (a function of the main script) to do this in one command. This will verify that the extra key in question does exist, then add it to the authorized_keys file. `add_mobile_key` does the same thing for the mobile directory.
 #add_extra_key extrakey.coltondrg.in
+#add_mobile_key android.coltondrg.in
 
 
 # This lets the user know the script is complete, best not to edit that.

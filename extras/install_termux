@@ -1,6 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/env bash
 # coltondrg?'s ssh keystore
-# Simple script to support Termux painlessly
+# Simple script to support Termux (legacy) painlessly
+# This is no longer required as Termux 0.66+ (and maybe some older versions idk) have magical hacks that let the normal /usr/bin/env binary work. That's right, you can now just run the main install script on any recent version of Termux. Thanks Termux, very cool!
+# For now this script will stay here. Until I feel like it won't anymore.
 cd "$(dirname "$0")/.."
 bash install "$@"
 exit $?

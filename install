@@ -10,7 +10,7 @@ function do_cd() {
 }
 
 function build_vars() {
-SCRIPT_REV="v11"
+SCRIPT_REV="v12"
 if [ "$INSTALL_FILE" = "" ]; then
 INSTALL_FILE="$HOME/.ssh/authorized_keys"
 fi
@@ -132,6 +132,7 @@ function do_the_thing() {
 	if [ -x "postinstall" ]; then
 		echo "Executing postinstall script."
 		export -f add_extra_key
+		export -f add_mobile_key
 		export -f add_comment
 		export INSTALL_FILE="$INSTALL_FILE"
 		"./postinstall" "${ORIGINAL_ARGS[@]}"
@@ -143,6 +144,12 @@ function do_the_thing() {
 function add_extra_key() {
 	if [ -f "extras/$1.pub" ];then
 		cat "extras/$1.pub" >> "$INSTALL_FILE"
+	fi
+}
+
+function add_mobile_key() {
+	if [ -f "mobile/$1.pub" ];then
+		cat "mobile/$1.pub" >> "$INSTALL_FILE"
 	fi
 }
 
